@@ -13,8 +13,8 @@ struct LanguageUtil {
     private let maps: [String: String]
     private let icons: JSON
 
-    static let shared = LanguageUtil()
-    static let defaultColor = "#eee"
+    public static let shared = LanguageUtil()
+    public static let defaultColor = "#eee"
 
     init() {
         var lang: JSON = []
@@ -40,7 +40,7 @@ struct LanguageUtil {
     }
 
     // filter language color
-    func langWith(filter: String) -> [(lang: String, color: String)] {
+    public func langWith(filter: String) -> [(lang: String, color: String)] {
         if filter.isEmpty {
             return languages
         }
@@ -49,14 +49,14 @@ struct LanguageUtil {
         }
     }
 
-    func color(forLang lang: String) -> String {
+    public func color(forLang lang: String) -> String {
         if let color = maps[lang], !color.isEmpty {
             return color
         }
         return Self.defaultColor
     }
 
-    func icon(forLang lang: String) -> String {
+    public func icon(forLang lang: String) -> String {
         let f = lang.lowercased()
 
         if let icon = icons["languageIds"][f].string {
@@ -66,7 +66,7 @@ struct LanguageUtil {
         return "default-file"
     }
 
-    func icon(forFile file: String) -> String {
+    public func icon(forFile file: String) -> String {
         let f = file.lowercased()
 
         if let icon = icons["fileNames"][f].string {

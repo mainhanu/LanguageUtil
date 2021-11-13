@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-struct LanguageUtil {
+public struct LanguageUtil {
     let languages: [(lang: String, color: String)]
     private let maps: [String: String]
     private let icons: JSON

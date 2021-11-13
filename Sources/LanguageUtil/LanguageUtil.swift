@@ -50,7 +50,7 @@ public struct LanguageUtil {
     }
 
     public func color(forLang lang: String) -> String {
-        if let color = maps[lang], !color.isEmpty {
+        if let color = maps[lang.lowercased()], !color.isEmpty {
             return color
         }
         return Self.defaultColor

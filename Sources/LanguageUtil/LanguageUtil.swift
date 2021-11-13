@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftyJSON
+import SwiftUI
 
 public struct LanguageUtil {
     let languages: [(lang: String, color: String)]
@@ -15,6 +16,7 @@ public struct LanguageUtil {
 
     public static let shared = LanguageUtil()
     public static let defaultColor = "#eee"
+    public static let bundle = Bundle.module;
 
     init() {
         var lang: JSON = []

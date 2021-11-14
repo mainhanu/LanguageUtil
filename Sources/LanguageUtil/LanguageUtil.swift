@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftyJSON
-import SwiftUI
 
 public struct LanguageUtil {
     let languages: [(lang: String, color: String)]
@@ -16,7 +15,6 @@ public struct LanguageUtil {
 
     public static let shared = LanguageUtil()
     public static let defaultColor = "#eee"
-    public static let bundle = Bundle.module;
 
     init() {
         var lang: JSON = []
@@ -58,33 +56,34 @@ public struct LanguageUtil {
         return Self.defaultColor
     }
 
-    public func icon(forLang lang: String) -> String {
-        let f = lang.lowercased()
+    public func icon(forLang lang: String) -> URL? {
+        var name = "default-file"
 
-        if let icon = icons["languageIds"][f].string {
-            return icon
+        if let icon = icons["languageIds"][lang.lowercased()].string {
+            name = icon
         }
 
-        return "default-file"
+        return Bundle.module.url(forResource: name, withExtension: "png")
     }
 
-    public func icon(forFile file: String) -> String {
+    public func icon(forFile file: String) -> URL? {
+        var name = "default-file"
         let f = file.lowercased()
 
         if let icon = icons["fileNames"][f].string {
-            return icon
+            name = icon
         }
 
         if let ext = URL(string: f)?.pathExtension {
             if let icon = icons["fileExtensions"][ext].string {
-                return icon
+                name = icon
             }
 
             if let icon = icons["languageIds"][ext].string {
-                return icon
+                name = icon
             }
         }
 
-        return "default-file"
+        return Bundle.module.url(forResource: name, withExtension: "png")
     }
 }

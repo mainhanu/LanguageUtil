@@ -63,7 +63,7 @@ public struct LanguageUtil {
             name = icon
         }
 
-        return Bundle.module.url(forResource: name, withExtension: "png")
+        return Bundle.module.url(forResource: "\(name)@3x", withExtension: "png")
     }
 
     public func icon(forFile file: String) -> URL? {
@@ -84,6 +84,6 @@ public struct LanguageUtil {
             }
         }
 
-        return Bundle.module.url(forResource: name, withExtension: "png")
+        return Bundle.module.url(forResource: "\(name)@3x", withExtension: "png")
     }
 }
